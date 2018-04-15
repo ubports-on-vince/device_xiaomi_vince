@@ -1159,3 +1159,4 @@ service time_daemon /system/bin/time_daemon
     class main
     user root
     group root
+    disabled
