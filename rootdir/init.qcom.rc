@@ -25,7 +25,7 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.usb.rc
+#import init.qcom.usb.rc
 import init.msm.usb.configfs.rc
 import init.target.rc
 import init.qcom.factory.rc
