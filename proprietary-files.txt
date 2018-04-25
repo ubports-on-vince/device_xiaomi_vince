@@ -1156,3 +1156,6 @@ vendor/lib/mediadrm/libwvdrmengine.so|70419ce1f8eb6bd3aa36234f8d7e8003569efc9c
 
 # Wi-Fi - from oxygen (MiMax 2)
 bin/wcnss_service|7e4c45e60ab32a383c02737a99772ad1251c9171
+
+# TAS Smart PA Firmware - from vince
+etc/firmware/tas2557_uCDSP.bin
