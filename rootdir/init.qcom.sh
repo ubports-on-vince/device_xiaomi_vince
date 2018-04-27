@@ -353,11 +353,3 @@ case "$buildvariant" in
         ;;
 esac
 
-# hack for speaker audio
-if [ ! -f /system/etc/firmware/ ]; then
-    mkdir -p /etc/firmware
-    cp /system/etc/firmware/tas2557_uCDSP.bin /etc/firmware/.
-    chown root.root /etc/firmware
-    chmod 644 /etc/firmware/*
-    chmod 755 /etc/firmware
-fi
