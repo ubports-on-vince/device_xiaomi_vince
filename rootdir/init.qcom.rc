@@ -645,18 +645,21 @@ service ipacm-diag /system/bin/ipacm-diag
     user system
     socket ipacm_log_file dgram 660 system net_admin
     group net_admin qcom_diag
+    disabled
 
 service ipacm /system/bin/ipacm
     class main
     user net_admin
     group net_admin inet
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service qti /system/vendor/bin/qti
     class main
     user radio
     group radio net_raw qcom_diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service sensors /system/bin/sensors.qcom
     class core
