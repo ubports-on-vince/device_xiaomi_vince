@@ -36,6 +36,7 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
     chown system:graphics /sys/devices/virtual/graphics/fb0/idle_time
+    chmod 0777 /sys/devices/virtual/graphics/fb0/idle_time
 
 on init
     # Set permissions for persist partition
