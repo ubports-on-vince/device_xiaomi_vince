@@ -906,6 +906,7 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    disabled
 
 service hostapd /system/bin/hostapd -dd /data/hostapd/hostapd.conf
     class late_start
@@ -1169,6 +1170,7 @@ service time_daemon /system/bin/time_daemon
     disabled
     
 # fix video record freeze
+# do not need now
 service audioserver /system/bin/audioserver
     class main
     user audioserver
