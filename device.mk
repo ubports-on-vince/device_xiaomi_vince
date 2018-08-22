@@ -269,4 +269,5 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
      persist.camera.shutter.disable=1 \
-     camera.disable_zsl_mode=1
+     camera.disable_zsl_mode=1 \
+     ro.lirc.dev=/dev/peel_ir
