@@ -35,7 +35,7 @@ static const consumerir_freq_range_t consumerir_freqs[] = {
 static int open_lircdev(void)
 {
     char value[PROPERTY_VALUE_MAX] = {'\0'};
-    property_get("ro.lirc.dev", value, "/dev/lirc0");
+    property_get("ro.lirc.dev", value, "/dev/peel_ir");
     int fd = open(value, O_RDWR);
     if (fd < 0) {
         ALOGE("failed to open %s error %d", value, fd);
