@@ -270,4 +270,4 @@
 /dev/block/platform/soc/1da4000.ufshc/by-name/frp       0600   system     system
 
 # lirc
-/dev/lirc0                0660   system     system
+/dev/peel_ir               0660   system     system

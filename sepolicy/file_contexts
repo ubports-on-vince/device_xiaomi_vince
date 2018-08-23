@@ -4,7 +4,7 @@
 /sys/devices/soc/soc:fpc1020(/.*)?		u:object_r:fpc_sysfs:s0
 
 # Ir
-/dev/lirc[0-9]*					u:object_r:lirc_device:s0
+/dev/peel_ir					u:object_r:peelir_device:s0
 
 # Goodix Fingerprint
 /dev/ttyACM[0-9]*				u:object_r:gx_fpd_device:s0
