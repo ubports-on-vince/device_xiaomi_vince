@@ -279,3 +279,6 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
 #
 PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.qti_bsp.abi=1
