@@ -222,9 +222,9 @@ service imscmservice /system/bin/imscmservice
    group radio net_raw diag diag log
    disabled
 
-#on property:sys.ims.DATA_DAEMON_STATUS=1
-#    start ims_rtp_daemon
-#    start imscmservice
+on property:sys.ims.DATA_DAEMON_STATUS=1
+    start ims_rtp_daemon
+    start imscmservice
 
 service hbtp /system/vendor/bin/hbtp_daemon
     class main

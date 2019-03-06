@@ -278,8 +278,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
 # Ubuntu Overlay Files
 #
 PRODUCT_COPY_FILES += \
-    device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths_vince.xml
+    device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1
