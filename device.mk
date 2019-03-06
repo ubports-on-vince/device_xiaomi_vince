@@ -64,6 +64,9 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.software.sip.voip.xml:system/etc/permissions/android.software.sip.voip.xml \
     frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml
 
+PRODUCT_PACKAGES += \
+    libcurl
+
 # ANT
 PRODUCT_PACKAGES += \
     AntHalService \
@@ -271,3 +274,12 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
      persist.camera.shutter.disable=1 \
      camera.disable_zsl_mode=1 \
      ro.lirc.dev=/dev/peel_ir
+
+# Ubuntu Overlay Files
+#
+PRODUCT_COPY_FILES += \
+    device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
+    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths_vince.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.build.qti_bsp.abi=1
