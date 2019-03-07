@@ -383,6 +383,9 @@ on post-fs-data
     # set aggressive read ahead for dm-0 and dm-1 during boot up
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
+    
+    # wlan
+    insmod /system/lib/modules/wlan.ko
 
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
