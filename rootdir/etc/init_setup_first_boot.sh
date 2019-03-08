@@ -26,5 +26,9 @@ adduser --force-badname --system --home /nonexistent --no-create-home --quiet _a
 #fix incorrect name 
 mkdir -p /etc/system-image/config.d
 
+#fix Cgroup namespace: required
+mkdir /dev/cpuset
+mount -t cpuset cpuset /dev/cpuset
+
 touch /home/phablet/.first-setup-done
 exit
