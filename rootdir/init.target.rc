@@ -282,6 +282,7 @@ service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
+    disabled
 
 #disable QC3.0
 #service hvdcp_opti /system/bin/hvdcp_opti
