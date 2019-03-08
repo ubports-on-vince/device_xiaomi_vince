@@ -13,9 +13,6 @@ mkdir -p /run/user/32011
 chown phablet /run/user/32011
 chmod 0700 /run/user/32011
 
-#fix wlan
-insmod /system/lib/modules/wlan.ko
-
 #fix dbus errors:
 chmod 4777 /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 chown root:messagebus /usr/lib/dbus-1.0/dbus-daemon-launch-helper
