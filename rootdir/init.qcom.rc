@@ -1178,3 +1178,9 @@ service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.s
     user root
     group root
     oneshot
+
+service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
+    class main
+    user root
+    group root
+    oneshot

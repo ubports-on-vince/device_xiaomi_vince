@@ -5,6 +5,9 @@
 # not work, so we loop.
 MAXTRIES=15
 
+#fix wlan
+insmod /system/lib/modules/wlan.ko
+
 #setprop bluetooth.hciattach true
 setprop ro.qualcomm.bt.hci_transport smd
 setprop qcom.bt.dev_power_class 2
