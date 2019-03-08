@@ -1173,6 +1173,10 @@ service audioserver /system/bin/audioserver
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     disabled
 
+on property:sys.boot_completed=1
+   start init_setup_first_boot
+   start init_wlan_bt
+
 service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.sh
     class main
     user root
