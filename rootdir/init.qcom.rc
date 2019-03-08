@@ -384,9 +384,6 @@ on post-fs-data
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
     
-    # wlan
-    insmod /system/lib/modules/wlan.ko
-
 service nqnfcinfo /system/vendor/bin/nqnfcinfo
     class late_start
     group nfc
@@ -1175,3 +1172,9 @@ service audioserver /system/bin/audioserver
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     disabled
+
+service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.sh
+    class main
+    user root
+    group root
+    oneshot
