@@ -1157,10 +1157,10 @@ on property:ro.logdumpd.enabled=1
     start logdumpd
 
 service time_daemon /system/bin/time_daemon
-    class main
+    class late_start
     user root
     group root
-    disabled
+    writepid /dev/cpuset/system-background/tasks
     
 # fix video record freeze
 # do not need now
