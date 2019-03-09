@@ -1174,16 +1174,16 @@ service audioserver /system/bin/audioserver
     disabled
 
 on property:sys.boot_completed=1
-   start init.setup.firstboot
-   start init.wlan.bt
+   start init_setup_first_boot
+   start init_wlan_bt
 
-service init.setup.firstboot /system/bin/sh /system/etc/init_setup_first_boot.sh
+service init_setup_first_boot /system/bin/sh /system/etc/init_setup_first_boot.sh
     class main
     user root
     group root
     oneshot
 
-service init.wlan.bt /system/bin/sh /system/etc/init_hcismd_up.sh
+service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
     class main
     user root
     group root
