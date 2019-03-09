@@ -301,6 +301,9 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/libs/liblowi_client.so:system/lib/liblowi_client.so \
     device/xiaomi/vince/ubuntu/libs/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
     device/xiaomi/vince/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
+    device/xiaomi/vince/ubuntu/init_setup_first_boot.sh:system/etc/init_setup_first_boot.sh \
+    device/xiaomi/vince/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
+
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1

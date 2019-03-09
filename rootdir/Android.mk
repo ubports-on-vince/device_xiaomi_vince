@@ -221,17 +221,3 @@ LOCAL_MODULE_CLASS := ETC
 LOCAL_SRC_FILES    := etc/init.qcom.uicc.sh
 include $(BUILD_PREBUILT)
 
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init_setup_first_boot.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init_setup_first_boot.sh
-include $(BUILD_PREBUILT)
-
-
-include $(CLEAR_VARS)
-LOCAL_MODULE       := init_hcismd_up.sh
-LOCAL_MODULE_TAGS  := optional eng
-LOCAL_MODULE_CLASS := ETC
-LOCAL_SRC_FILES    := etc/init_hcismd_up.sh
-include $(BUILD_PREBUILT)
