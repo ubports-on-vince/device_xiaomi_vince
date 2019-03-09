@@ -1,0 +1,16 @@
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system readproc
+    critical
+    onrestart restart healthd
+    onrestart restart zygote
+    onrestart restart audioserver
+    onrestart restart media
+    onrestart restart surfaceflinger
+    onrestart restart inputflinger
+    onrestart restart drm
+    onrestart restart cameraserver
+    onrestart restart minimediaservice
+    onrestart restart miniafservice
+    writepid /dev/cpuset/system-background/tasks
