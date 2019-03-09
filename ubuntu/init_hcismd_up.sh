@@ -6,7 +6,12 @@
 MAXTRIES=15
 
 #fix wlan
-insmod /system/lib/modules/wlan.ko
+insmod /system/lib/modules/wlan.ko 2>&1 >> /tmp/insmod.log
+if [ "$?" -ne "0" ]; then
+  #retry once
+  sleep 2
+  insmod /system/lib/modules/wlan.ko
+fi
 
 #setprop bluetooth.hciattach true
 setprop ro.qualcomm.bt.hci_transport smd
