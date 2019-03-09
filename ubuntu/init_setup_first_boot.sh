@@ -1,4 +1,4 @@
-#!/system/bin/sh
+#!/bin/sh
 
 if [ -f /home/phablet/.first-setup-done ]; then
     exit
