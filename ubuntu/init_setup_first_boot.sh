@@ -1,9 +1,10 @@
 #!/bin/sh
 
-if [ -f /home/phablet/.first-setup-done ]; then
-    exit
-fi
+#if [ -f /home/phablet/.first-setup-done ]; then
+#    exit
+#fi
 
+mount -o remount rw /
 
 #fix egl permission for unity8:
 chmod 666 /dev/kgsl-3d0
@@ -30,5 +31,5 @@ mkdir -p /etc/system-image/config.d
 mkdir /dev/cpuset
 mount -t cpuset cpuset /dev/cpuset
 
-touch /home/phablet/.first-setup-done
+#touch /home/phablet/.first-setup-done
 exit
