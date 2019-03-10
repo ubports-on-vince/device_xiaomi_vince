@@ -281,7 +281,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
 #
 PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/halium/etc/mixer_paths_vince.xml \
+    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths_vince.xml \
     device/xiaomi/vince/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/vince.conf \
     device/xiaomi/vince/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     device/xiaomi/vince/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
