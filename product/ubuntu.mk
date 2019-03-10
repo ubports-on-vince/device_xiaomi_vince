@@ -5,7 +5,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 #
 PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
-    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/halium/etc/mixer_paths_vince.xml \
+    device/xiaomi/vince/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths_vince.xml \
     device/xiaomi/vince/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/vince.conf \
     device/xiaomi/vince/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     device/xiaomi/vince/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
@@ -24,4 +24,9 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/libs/libloc_ds_api.so:system/lib/libloc_ds_api.so \
     device/xiaomi/vince/ubuntu/libs/liblowi_client.so:system/lib/liblowi_client.so \
     device/xiaomi/vince/ubuntu/libs/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
-    device/xiaomi/vince/ubuntu/libs/libulp2.so:system/lib/libulp2.so 
+    device/xiaomi/vince/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
+    device/xiaomi/vince/ubuntu/init_setup_first_boot.sh:system/etc/init_setup_first_boot.sh \
+    device/xiaomi/vince/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
+    device/xiaomi/vince/ubuntu/init_setup_first_boot.sh:system/halium/var/lib/lxc/android/pre-start.d/init_setup_first_boot.sh \
+    device/xiaomi/vince/ubuntu/init_hcismd_up.sh:system/halium/var/lib/lxc/android/pre-start.d/init_hcismd_up.sh \
+    device/xiaomi/vince/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc
