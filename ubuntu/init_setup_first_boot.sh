@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 #if [ -f /home/phablet/.first-setup-done ]; then
 #    exit
 #fi
@@ -31,5 +33,4 @@ mkdir -p /etc/system-image/config.d
 mkdir /dev/cpuset
 mount -t cpuset cpuset /dev/cpuset
 
-#touch /home/phablet/.first-setup-done
 exit
