@@ -1,6 +1,9 @@
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1
 
+#This keeps time correct across reboots
+PRODUCT_PACKAGES += timekeep
+
 # Ubuntu Overlay Files
 #
 PRODUCT_COPY_FILES += \
