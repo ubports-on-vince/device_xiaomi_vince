@@ -6,12 +6,15 @@
 MAXTRIES=15
 
 #fix wlan
-insmod /system/lib/modules/wlan.ko 2>&1 >> /tmp/insmod.log
-if [ "$?" -ne "0" ]; then
-  #retry once
-  sleep 2
-  insmod /system/lib/modules/wlan.ko
-fi
+j=1
+while [ ! $j -gt $MAXTRIES ]  ; do
+    insmod /system/lib/modules/wlan.ko
+    if [ "$?" -ne "0" ]; then
+      sleep 1
+    fi
+    
+    j=$((j + 1))
+done
 
 #setprop bluetooth.hciattach true
 setprop ro.qualcomm.bt.hci_transport smd
@@ -34,6 +37,7 @@ while [ ! $i -gt $MAXTRIES ]  ; do
         exit 0
     fi
     sleep 1
+    i=$((i + 1))
     if [ $i == $MAXTRIES ] ; then
         # must have gotten through all our retries, fail
         exit 1

@@ -303,6 +303,8 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
     device/xiaomi/vince/ubuntu/init_setup_first_boot.sh:system/etc/init_setup_first_boot.sh \
     device/xiaomi/vince/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
+    device/xiaomi/vince/ubuntu/init_setup_first_boot.sh:system/halium/var/lib/lxc/android/pre-start.d/init_setup_first_boot.sh \
+    device/xiaomi/vince/ubuntu/init_hcismd_up.sh:system/halium/var/lib/lxc/android/pre-start.d/init_hcismd_up.sh \
     device/xiaomi/vince/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc
 
 
