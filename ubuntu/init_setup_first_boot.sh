@@ -1,11 +1,5 @@
 #!/bin/sh
 
-set -x
-
-#if [ -f /home/phablet/.first-setup-done ]; then
-#    exit
-#fi
-
 mount -o remount rw /
 
 #fix egl permission for unity8:
@@ -23,7 +17,7 @@ chmod u+s /usr/lib/dbus-1.0/dbus-daemon-launch-helper
 
 
 #add _apt user for apt:
-adduser --force-badname --system --home /nonexistent --no-create-home --quiet _apt
+adduser --force-badname --system --home /nonexistent --no-create-home --quiet _apt || true
 
 
 #fix incorrect name 
@@ -33,4 +27,5 @@ mkdir -p /etc/system-image/config.d
 mkdir /dev/cpuset
 mount -t cpuset cpuset /dev/cpuset
 
+#touch /home/phablet/.first-setup-done
 exit
