@@ -282,6 +282,7 @@ PRODUCT_DEFAULT_PROPERTY_OVERRIDES  += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/70-android.rules:system/halium/lib/udev/rules.d/70-android.rules \
     $(LOCAL_PATH)/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths_vince.xml \
+    $(LOCAL_PATH)/ubuntu/mixer_paths_vince.xml:system/etc/mixer_paths.xml \
     $(LOCAL_PATH)/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/vince.conf \
     $(LOCAL_PATH)/ubuntu/vince.conf:system/halium/etc/ubuntu-touch-session.d/android.conf \
     $(LOCAL_PATH)/ubuntu/ofono.override:system/halium/etc/init/ofono.override \
@@ -307,7 +308,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/var/lib/lxc/android/pre-start.d/init_hcismd_up.sh \
     $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
-    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base
+    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/ubuntu/tas2557_uCDSP.bin:system/halium/etc/firmware/tas2557_uCDSP.bin \
 
 
 
