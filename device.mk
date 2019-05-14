@@ -309,9 +309,39 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
     $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
-    $(LOCAL_PATH)/ubuntu/tas2557_uCDSP.bin:system/halium/etc/firmware/tas2557_uCDSP.bin \
-
-
+    $(LOCAL_PATH)/ubuntu/tas2557_uCDSP.bin:etc/firmware/tas2557_uCDSP.bin \
+    $(LOCAL_PATH)/ubuntu/audio/audio_policy.default.so:system/halium/lib/hw/audio_policy.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.a2dp.default.so:system/halium/lib/hw/audio.a2dp.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.primary.default.so:system/halium/lib/hw/audio.primary.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.primary.msm8953.so:system/halium/lib/hw/audio.primary.msm8953.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.r_submix.default.so:system/halium/lib/hw/audio.r_submix.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.usb.default.so:system/halium/lib/hw/audio.usb.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio_policy.default.so:system/lib/hw/audio_policy.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.a2dp.default.so:system/lib/hw/audio.a2dp.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.primary.default.so:system/lib/hw/audio.primary.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.primary.msm8953.so:system/lib/hw/audio.primary.msm8953.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.r_submix.default.so:system/lib/hw/audio.r_submix.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/audio.usb.default.so:system/lib/hw/audio.usb.default.so \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_Bluetooth_cal.acdb:etc/ \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_General_cal.acdb:etc/MTP_General_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_Global_cal.acdb:etc/MTP_Global_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_Handset_cal.acdb:etc/MTP_Handset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_Headset_cal.acdb:etc/MTP_Headset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_Speaker_cal.acdb:etc/MTP_Speaker_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_Bluetooth_cal.acdb:etc/MTP_WCD9335_Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_General_cal.acdb:etc/MTP_WCD9335_General_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_Global_cal.acdb:etc/MTP_WCD9335_Global_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_Handset_cal.acdb:etc/MTP_WCD9335_Handset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_Headset_cal.acdb:etc/MTP_WCD9335_Headset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/MTP_WCD9335_Speaker_cal.acdb:etc/MTP_WCD9335_Speaker_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_adsp_avs_config.acdb:etc/QRD_adsp_avs_config.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_Bluetooth_cal.acdb:etc/QRD_Bluetooth_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_General_cal.acdb:etc/QRD_General_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_Global_cal.acdb:etc/QRD_Global_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_Handset_cal.acdb:etc/QRD_Handset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_Headset_cal.acdb:etc/QRD_Headset_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/audio/QRD_Speaker_cal.acdb:etc/QRD_Speaker_cal.acdb \
+    $(LOCAL_PATH)/ubuntu/fix_pulseaudio.sh:home/phablet/pa.sh \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1

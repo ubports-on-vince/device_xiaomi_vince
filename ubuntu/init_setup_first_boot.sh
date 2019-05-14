@@ -6,6 +6,9 @@
 
 mount -o remount rw /
 
+#copy firmware to /etc 
+cp /firmware/image/* /etc/firmware
+
 #fix egl permission for unity8:
 chmod 666 /dev/kgsl-3d0
 
