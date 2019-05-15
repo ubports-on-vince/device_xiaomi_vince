@@ -342,6 +342,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/audio/QRD_Headset_cal.acdb:etc/QRD_Headset_cal.acdb \
     $(LOCAL_PATH)/ubuntu/audio/QRD_Speaker_cal.acdb:etc/QRD_Speaker_cal.acdb \
     $(LOCAL_PATH)/ubuntu/fix_pulseaudio.sh:home/phablet/pa.sh \
+    $(LOCAL_PATH)/ubuntu/anbox.sh:home/phablet/anbox.sh \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1
