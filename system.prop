@@ -306,3 +306,8 @@ ro.gps.agps_provider=1
 
 # lirc
 ro.lirc.dev=/dev/peel_ir 
+
+# Settings for droidmedia
+camera.fifo.disable=1
+persist.camera.shutter.disable=1
+persist.media.metrics.enabled=0
