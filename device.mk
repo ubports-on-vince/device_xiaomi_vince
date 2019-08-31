@@ -334,3 +334,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     libminisf_32 \
     libaudioflingerglue \
     libaudioflingerglue_32
+
+# telepathy-ofono quirks
+PRODUCT_PROPERTY_OVERRIDES += \
+    t-o.quirk.forcesinkprimary=1 \
+    t-o.quirk.forcesourceprimary=1
