@@ -339,3 +339,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     t-o.quirk.forcesinkprimary=1 \
     t-o.quirk.forcesourceprimary=1
+
+#droidmedia
+MINIMEDIA_SENSORSERVER_DISABLE := 1
