@@ -18,11 +18,14 @@ service servicemanager /system/bin/servicemanager
     writepid /dev/cpuset/system-background/tasks
 
 service minimedia /system/bin/minimediaservice
+    setenv LD_LIBRARY_PATH /system/lib:/vendor/lib:/odm/lib
     class main
     user media
     group audio camera
     ioprio rt 4
-
+    setenv LD_PRELOAD /system/lib/libOmxVdec.so
+    setenv MINIMEDIA_SENSORSERVER_DISABLE 1
+    
 service minisf /system/bin/minisfservice
     class main
     user system
