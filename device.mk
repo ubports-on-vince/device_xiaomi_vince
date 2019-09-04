@@ -308,7 +308,7 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/switch:system/halium/usr/share/h2w/switch \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
-    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/touch.pa
+    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa
     
 
 
