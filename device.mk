@@ -308,7 +308,10 @@ PRODUCT_COPY_FILES += \
     device/xiaomi/vince/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/switch:system/halium/usr/share/h2w/switch \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
-    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa
+    $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/abstractions/base:system/halium/etc/apparmor.d/abstractions/base \
+    $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android
     
 
 
@@ -333,7 +336,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
     libcameraservice_32 \
     libdroidmedia_32 \
     libui_compat_layer_32 \
+    libui_compat_layer \
     libsf_compat_layer_32 \
+    libsf_compat_layer \
     minisfservice \
     libminisf_32 \
     libaudioflingerglue \
