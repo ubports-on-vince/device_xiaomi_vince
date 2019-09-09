@@ -1188,3 +1188,13 @@ service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
     user root
     group root
     oneshot
+
+on property:init.svc.sensorservice=running
+    start unblock_wakelock
+
+service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
+    class main
+    user root
+    group root
+    disabled
+    oneshot
