@@ -350,6 +350,6 @@ MINIMEDIA_SENSORSERVER_DISABLE := 1
 
 # telepathy-ofono quirks
 PRODUCT_PROPERTY_OVERRIDES += \
-    t-o.quirk.forcesink=sink.primary \
-    t-o.quirk.forcesource=source.primary \
+    ro.t-o.quirk.forcesink=sink.primary \
+    ro.t-o.quirk.forcesource=source.primary \
     ro.qc.sensors.wl_dis=true
