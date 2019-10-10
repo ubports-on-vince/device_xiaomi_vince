@@ -21,6 +21,7 @@
   # and localisations of date should be available EVERYWHERE, so
   # StackGuard, FormatGuard, etc., alerts can be properly logged.
   /dev/log                       w,
+  /dev/pmsg0                     w,
   /dev/random                    r,
   /dev/urandom                   r,
   /etc/locale/**                 r,
@@ -42,6 +43,7 @@
   # anything when reading so this is ok.
   /{,var/}run/systemd/journal/stdout rw,
 
+  /usr/lib{,32,64}/arm-linux-gnueabihf/**  mr,
   /usr/lib{,32,64}/locale/**             mr,
   /usr/lib{,32,64}/gconv/*.so            mr,
   /usr/lib{,32,64}/gconv/gconv-modules*  mr,
