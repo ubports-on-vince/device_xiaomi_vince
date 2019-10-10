@@ -217,7 +217,9 @@ on boot
     chmod 0666 /sys/class/leds/blue/brightness
 
     #torch
-    chmod 0666 /sys/devices/soc/soc:qcom,camera-flash/leds/torch-light*/*
+    chmod 0666 /sys/class/leds/led\:switch/brightness
+    chmod 0666 /sys/class/leds/torch-light0/brightness
+    chmod 0666 /sys/class/leds/torch-light1/brightness
 
 # msm specific files that need to be created on /data
 on post-fs-data
