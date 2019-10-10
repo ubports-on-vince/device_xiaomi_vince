@@ -325,9 +325,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     direct_ubuntu_application_sensors_c_api_for_hybris_test \
     direct_ubuntu_application_sensors_for_hybris_test \
     direct_ubuntu_application_gps_c_api_for_hybris_test \
-    libcamera_compat_layer \
     libcamera_compat_layer_32 \
-    libmedia_compat_layer \
     libmedia_compat_layer_32 \
     libdroidmedia \
     libminisf \
