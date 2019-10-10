@@ -205,6 +205,20 @@ on boot
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
 
+    #Vibrator
+    chmod 0666 /sys/class/timed_output/vibrator/enable
+
+    #LEDs
+    chmod 0666 /sys/class/leds/red/blink
+    chmod 0666 /sys/class/leds/red/brightness
+    chmod 0666 /sys/class/leds/green/blink
+    chmod 0666 /sys/class/leds/green/brightness
+    chmod 0666 /sys/class/leds/blue/blink
+    chmod 0666 /sys/class/leds/blue/brightness
+
+    #torch
+    chmod 0666 /sys/devices/soc/soc:qcom,camera-flash/leds/torch-light*/*
+
 # msm specific files that need to be created on /data
 on post-fs-data
     #Create directories for Fingerprint
