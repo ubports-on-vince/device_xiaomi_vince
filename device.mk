@@ -220,7 +220,6 @@ PRODUCT_PACKAGES += \
     fstab.qcom \
     init.qcom.rc \
     init.qcom.sh \
-    init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.target.rc \
     init_setup_first_boot.sh \
@@ -315,6 +314,12 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/environment:system/halium/etc/environment \
     $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml
     
+
+# Ubuntu Touch common USB initialization
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/ubuntu/usr/share/usbinit/setupusb:system/halium/usr/share/usbinit/setupusb \
+    $(LOCAL_PATH)/ubuntu/etc/init/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
+    $(LOCAL_PATH)/ubuntu/usr/share/upstart/sessions/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
