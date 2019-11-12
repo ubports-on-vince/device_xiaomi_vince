@@ -114,6 +114,7 @@
   /dev/full                      rw,
   /dev/tty                       rw,
   /socket/property_service       rw,
+  /socket/logdw                  rw,
 
   # Sometimes used to determine kernel/user interfaces to use
   @{PROC}/sys/kernel/version     r,
@@ -135,6 +136,8 @@
 
   # some applications will display license information
   /usr/share/common-licenses/**  r,
+  # some applications need translations
+  /usr/share/qt5/translations/** r,
 
   # glibc statvfs
   @{PROC}/filesystems            r,
