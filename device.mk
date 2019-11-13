@@ -346,7 +346,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     minisfservice \
     libminisf_32 \
     libaudioflingerglue \
-    libaudioflingerglue_32
+    libaudioflingerglue_32 \
+    camera_service
 
 #droidmedia
 MINIMEDIA_SENSORSERVER_DISABLE := 1
