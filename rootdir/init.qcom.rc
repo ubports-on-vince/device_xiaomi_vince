@@ -842,6 +842,7 @@ service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
     user system
     group system inet net_admin wifi
+    disabled
 
 on property:sys.shutdown.requested=*
     stop cnss-daemon
@@ -1190,15 +1191,8 @@ service audioserver /system/bin/audioserver
 
 on property:sys.boot_completed=1
    start init_firstboot
-   start init_wlan_bt
 
 service init_firstboot /system/bin/sh /system/etc/init_setup_first_boot.sh
-    class main
-    user root
-    group root
-    oneshot
-
-service init_wlan_bt /system/bin/sh /system/etc/init_hcismd_up.sh
     class main
     user root
     group root

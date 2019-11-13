@@ -593,6 +593,7 @@ on boot
 
 service mtservice /system/bin/mtd
     class late_start
+    disabled
 
 service vsimservice /system/bin/vsimd
     class late_start
@@ -602,6 +603,7 @@ service mlipayservice /system/bin/mlipayd
 
 service fidoca /system/bin/fidoca
     class late_start
+    disabled
 
 service PcbaConfigSet /system/bin/PcbaConfigSet
     class core

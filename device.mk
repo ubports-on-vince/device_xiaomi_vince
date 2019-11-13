@@ -301,9 +301,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/libs/libmm-color-convertor.so:system/lib/libmm-color-convertor.so \
     $(LOCAL_PATH)/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
     $(LOCAL_PATH)/ubuntu/init_setup_first_boot.sh:system/etc/init_setup_first_boot.sh \
-    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/etc/init_hcismd_up.sh \
     $(LOCAL_PATH)/ubuntu/init_setup_first_boot.sh:system/halium/var/lib/lxc/android/pre-start.d/init_setup_first_boot.sh \
-    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/var/lib/lxc/android/pre-start.d/init_hcismd_up.sh \
+    $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/usr/share/bluetooth-touch/vince \
     $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
     $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
@@ -312,7 +311,8 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/apparmor.d/hardware/graphics.d/apparmor-easyprof-ubuntu_android:system/halium/usr/share/apparmor/hardware/graphics.d/apparmor-easyprof-ubuntu_android \
     $(LOCAL_PATH)/ubuntu/unblock_wakelock.sh:system/etc/unblock_wakelock.sh \
     $(LOCAL_PATH)/ubuntu/environment:system/halium/etc/environment \
-    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml
+    $(LOCAL_PATH)/ubuntu/config.xml:system/halium/usr/share/powerd/device_configs/config-default.xml \
+    $(LOCAL_PATH)/ubuntu/bluetooth-touch-vince.conf:system/halium/etc/init/bluetooth-touch-android.conf
     
 
 # Ubuntu Touch common USB initialization
