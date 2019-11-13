@@ -355,4 +355,5 @@ MINIMEDIA_SENSORSERVER_DISABLE := 1
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary_output \
     ro.t-o.quirk.forcesource=source.record_24_primary_input \
-    ro.qc.sensors.wl_dis=true
+    ro.qc.sensors.wl_dis=true \
+    ubuntu.widi.supported=true
