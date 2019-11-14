@@ -1189,14 +1189,6 @@ service audioserver /system/bin/audioserver
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     disabled
 
-on property:sys.boot_completed=1
-   start init_firstboot
-
-service init_firstboot /system/bin/sh /system/etc/init_setup_first_boot.sh
-    class main
-    user root
-    group root
-    oneshot
 
 on property:init.svc.sensorservice=running
     start unblock_wakelock
