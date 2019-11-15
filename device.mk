@@ -29,7 +29,7 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
-BOARD_QTI_CAMERA_32BIT_ONLY := true 
+#BOARD_QTI_CAMERA_32BIT_ONLY := true 
 
 # Permissions
 PRODUCT_COPY_FILES += \
@@ -76,7 +76,7 @@ PRODUCT_PACKAGES += \
 # Audio
 PRODUCT_PACKAGES += \
     audiod \
-    audio.a2dp.default \
+#    audio.a2dp.default \
     audio.primary.msm8953 \
     audio.r_submix.default \
     audio.usb.default \
@@ -108,9 +108,9 @@ PRODUCT_COPY_FILES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.msm8953 \
-    libmm-qcamera \
-    Snap
+    camera.msm8953_32 \
+    libmm-qcamera_32
+#    Snap
 
 # Consumerir
 PRODUCT_PACKAGES += \
@@ -121,10 +121,10 @@ PRODUCT_PACKAGES += \
     copybit.msm8953 \
     gralloc.msm8953 \
     hwcomposer.msm8953 \
-    memtrack.msm8953 \
-    liboverlay \
-    libjni_livedisplay \
-    libtinyxml
+    memtrack.msm8953
+#    liboverlay \
+#    libjni_livedisplay \
+#    libtinyxml
 
 # Ebtables
 PRODUCT_PACKAGES += \
