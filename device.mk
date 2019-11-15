@@ -222,8 +222,6 @@ PRODUCT_PACKAGES += \
     init.qcom.sh \
     init.qcom.usb.sh \
     init.target.rc \
-    init_setup_first_boot.sh \
-    init_hcismd_up.sh \
     ueventd.qcom.rc
 
 PRODUCT_PACKAGES += \
