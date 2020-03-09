@@ -31,9 +31,5 @@ mkdir -p /etc/system-image/config.d
 mkdir /dev/cpuset
 mount -t cpuset cpuset /dev/cpuset
 
-
-# hack
-echo 80 > /sys/class/leds/lcd-backlight/max_brightness
-
 #touch /home/phablet/.first-setup-done
 exit
