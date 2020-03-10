@@ -336,7 +336,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     libmedia_compat_layer_32 \
     libdroidmedia \
     libminisf \
-    miniafservice \
     libcameraservice_32 \
     libdroidmedia_32 \
     libui_compat_layer_32 \
