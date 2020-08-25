@@ -131,6 +131,9 @@ BOARD_HARDWARE_CLASS += \
 
 TARGET_TAP_TO_WAKE_NODE := "/sys/devices/soc/78b7000.i2c/i2c-3/3-0020/input/input2/wake_gesture"
 
+# IPA
+USE_DEVICE_SPECIFIC_DATA_IPA_CFG_MGR := true
+
 # CNE / DPM
 BOARD_USES_QCNE := true
 
