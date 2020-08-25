@@ -335,14 +335,20 @@ PRODUCT_PROPERTY_OVERRIDES += \
     libcamera_compat_layer_32 \
     libmedia_compat_layer_32 \
     libdroidmedia \
+    libminisf \
+    minimediaservice \
+    miniafservice \
     libcameraservice_32 \
     libdroidmedia_32 \
     libui_compat_layer_32 \
     libui_compat_layer \
     libsf_compat_layer_32 \
     libsf_compat_layer \
+    minisfservice \
+    libminisf_32 \
     libaudioflingerglue \
-    libaudioflingerglue_32
+    libaudioflingerglue_32 \
+    camera_service
 
 #droidmedia
 MINIMEDIA_SENSORSERVER_DISABLE := 1
