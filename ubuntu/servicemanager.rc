@@ -12,26 +12,26 @@ service servicemanager /system/bin/servicemanager
     onrestart restart drm
     onrestart restart cameraserver
     # port from sfos
-#    onrestart restart miniaf
-#    onrestart restart minimedia
-#    onrestart restart minisf
+    onrestart restart miniaf
+    onrestart restart minimedia
+    onrestart restart minisf
     writepid /dev/cpuset/system-background/tasks
 
-#service minimedia /system/bin/minimediaservice
-#    setenv LD_LIBRARY_PATH /system/lib:/vendor/lib:/odm/lib
-#    class main
-#    user media
-#    group audio camera
-#    ioprio rt 4
-#    setenv LD_PRELOAD /system/lib/libOmxVdec.so
-#    setenv MINIMEDIA_SENSORSERVER_DISABLE 1
-#    
-#service minisf /system/bin/minisfservice
-#    class main
-#    user system
-#    group graphics
-#
-#service miniaf /system/bin/miniafservice
-#    class main
-#    user system
-#    group audio
+service minimedia /system/bin/minimediaservice
+    setenv LD_LIBRARY_PATH /system/lib:/vendor/lib:/odm/lib
+    class main
+    user media
+    group audio camera
+    ioprio rt 4
+    setenv LD_PRELOAD /system/lib/libOmxVdec.so
+    setenv MINIMEDIA_SENSORSERVER_DISABLE 1
+    
+service minisf /system/bin/minisfservice
+    class main
+    user system
+    group graphics
+
+service miniaf /system/bin/miniafservice
+    class main
+    user system
+    group audio
