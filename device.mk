@@ -29,8 +29,6 @@ PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 TARGET_SCREEN_HEIGHT := 2160
 TARGET_SCREEN_WIDTH := 1080
 
-HYBRIS_MEDIA_32_BIT_ONLY := false
-
 # Permissions
 PRODUCT_COPY_FILES += \
     external/ant-wireless/antradio-library/com.dsi.ant.antradio_library.xml:system/etc/permissions/com.dsi.ant.antradio_library.xml \
@@ -327,28 +325,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1
 
 # UBPorts
- PRODUCT_PACKAGES += \
+PRODUCT_PACKAGES += \
     libubuntu_application_api \
-    libubuntu_application_api_32 \
-    direct_ubuntu_application_sensors_c_api_for_hybris_test \
-    direct_ubuntu_application_sensors_for_hybris_test \
-    libcamera_compat_layer_32 \
-    libmedia_compat_layer_32 \
+    libcameraservice \
     libdroidmedia \
-    libminisf \
-    minimediaservice \
-    miniafservice \
-    libcameraservice_32 \
-    libdroidmedia_32 \
-    libui_compat_layer_32 \
+    libcamera_compat_layer \
+    libmedia_compat_layer \
     libui_compat_layer \
-    libsf_compat_layer_32 \
     libsf_compat_layer \
+    minimediaservice \
     minisfservice \
-    libminisf_32 \
+    libminisf \
     libaudioflingerglue \
-    libaudioflingerglue_32 \
-    camera_service
+    miniafservice
 
 #droidmedia
 MINIMEDIA_SENSORSERVER_DISABLE := 1
