@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -68,11 +68,6 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include "IPACM_ConntrackClient.h"
 #include "IPACM_Netlink.h"
 
-#ifdef FEATURE_IPACM_HAL
-#include "IPACM_OffloadManager.h"
-#include <HAL.h>
-#endif
-
 /* not defined(FEATURE_IPA_ANDROID)*/
 #ifndef FEATURE_IPA_ANDROID
 #include "IPACM_LanToLan.h"
@@ -83,7 +78,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define IPACM_FIREWALL_FILE_NAME    "mobileap_firewall.xml"
 #define IPACM_CFG_FILE_NAME    "IPACM_cfg.xml"
 #ifdef FEATURE_IPA_ANDROID
-#define IPACM_PID_FILE "/data/vendor/ipa/ipacm.pid"
+#define IPACM_PID_FILE "/data/misc/ipa/ipacm.pid"
 #define IPACM_DIR_NAME     "/data"
 #else/* defined(FEATURE_IPA_ANDROID) */
 #define IPACM_PID_FILE "/etc/ipacm.pid"
@@ -106,24 +101,9 @@ bool ipacm_logging = true;
 void ipa_is_ipacm_running(void);
 int ipa_get_if_index(char *if_name, int *if_index);
 
-IPACM_Neighbor *neigh;
-IPACM_IfaceManager *ifacemgr;
-
-#ifdef FEATURE_IPACM_RESTART
-int ipa_reset();
-/* support ipacm restart */
-int ipa_query_wlan_client();
-#endif
-
-#ifdef FEATURE_IPACM_HAL
-	IPACM_OffloadManager* OffloadMng;
-	HAL *hal;
-#endif
-
 /* start netlink socket monitor*/
 void* netlink_start(void *param)
 {
-	param = NULL;
 	ipa_nl_sk_fd_set_info_t sk_fdset;
 	int ret_val = 0;
 	memset(&sk_fdset, 0, sizeof(ipa_nl_sk_fd_set_info_t));
@@ -152,7 +132,6 @@ void* firewall_monitor(void *param)
 	ipacm_cmd_q_data evt_data;
 	uint32_t mask = IN_MODIFY | IN_MOVE;
 
-	param = NULL;
 	inotify_fd = inotify_init();
 	if (inotify_fd < 0)
 	{
@@ -239,9 +218,6 @@ void* ipa_driver_msg_notifier(void *param)
 	struct ipa_wlan_msg_ex *event_ex= NULL;
 	struct ipa_get_data_stats_resp_msg_v01 event_data_stats;
 	struct ipa_get_apn_data_stats_resp_msg_v01 event_network_stats;
-#ifdef FEATURE_IPACM_HAL
-	IPACM_OffloadManager* OffloadMng;
-#endif
 
 	ipacm_cmd_q_data evt_data;
 	ipacm_event_data_mac *data = NULL;
@@ -250,14 +226,10 @@ void* ipa_driver_msg_notifier(void *param)
 	ipacm_event_data_wlan_ex *data_ex;
 	ipa_get_data_stats_resp_msg_v01 *data_tethering_stats = NULL;
 	ipa_get_apn_data_stats_resp_msg_v01 *data_network_stats = NULL;
-#ifdef FEATURE_L2TP
-	ipa_ioc_vlan_iface_info *vlan_info = NULL;
-	ipa_ioc_l2tp_vlan_mapping_info *mapping = NULL;
-#endif
+
 	ipacm_cmd_q_data new_neigh_evt;
 	ipacm_event_data_all* new_neigh_data;
 
-	param = NULL;
 	fd = open(IPA_DRIVER, O_RDWR);
 	if (fd < 0)
 	{
@@ -700,97 +672,6 @@ void* ipa_driver_msg_notifier(void *param)
 			evt_data.evt_data = data_network_stats;
 			break;
 
-#ifdef FEATURE_IPACM_HAL
-		case IPA_QUOTA_REACH:
-			IPACMDBG_H("Received IPA_QUOTA_REACH\n");
-			OffloadMng = IPACM_OffloadManager::GetInstance();
-			if (OffloadMng->elrInstance == NULL) {
-				IPACMERR("OffloadMng->elrInstance is NULL, can't forward to framework!\n");
-			} else {
-				IPACMERR("calling OffloadMng->elrInstance->onLimitReached \n");
-				OffloadMng->elrInstance->onLimitReached();
-			}
-			continue;
-		case IPA_SSR_BEFORE_SHUTDOWN:
-			IPACMDBG_H("Received IPA_SSR_BEFORE_SHUTDOWN\n");
-			OffloadMng = IPACM_OffloadManager::GetInstance();
-			if (OffloadMng->elrInstance == NULL) {
-				IPACMERR("OffloadMng->elrInstance is NULL, can't forward to framework!\n");
-			} else {
-				IPACMERR("calling OffloadMng->elrInstance->onOffloadStopped \n");
-				OffloadMng->elrInstance->onOffloadStopped(IpaEventRelay::ERROR);
-			}
-			/* WA to clean up wlan instances during SSR */
-			evt_data.event = IPA_SSR_NOTICE;
-			evt_data.evt_data = NULL;
-			break;
-		case IPA_SSR_AFTER_POWERUP:
-			IPACMDBG_H("Received IPA_SSR_AFTER_POWERUP\n");
-			OffloadMng = IPACM_OffloadManager::GetInstance();
-			if (OffloadMng->elrInstance == NULL) {
-				IPACMERR("OffloadMng->elrInstance is NULL, can't forward to framework!\n");
-			} else {
-				IPACMERR("calling OffloadMng->elrInstance->onOffloadSupportAvailable \n");
-				OffloadMng->elrInstance->onOffloadSupportAvailable();
-			}
-			continue;
-#ifdef IPA_WLAN_FW_SSR_EVENT_MAX
-		case WLAN_FWR_SSR_BEFORE_SHUTDOWN:
-                        IPACMDBG_H("Received WLAN_FWR_SSR_BEFORE_SHUTDOWN\n");
-                        evt_data.event = IPA_WLAN_FWR_SSR_BEFORE_SHUTDOWN_NOTICE;
-                        evt_data.evt_data = NULL;
-                        break;
-#endif
-#endif
-#ifdef FEATURE_L2TP
-		case ADD_VLAN_IFACE:
-			vlan_info = (ipa_ioc_vlan_iface_info *)malloc(sizeof(*vlan_info));
-			if(vlan_info == NULL)
-			{
-				IPACMERR("Failed to allocate memory.\n");
-				return NULL;
-			}
-			memcpy(vlan_info, buffer + sizeof(struct ipa_msg_meta), sizeof(*vlan_info));
-			evt_data.event = IPA_ADD_VLAN_IFACE;
-			evt_data.evt_data = vlan_info;
-			break;
-
-		case DEL_VLAN_IFACE:
-			vlan_info = (ipa_ioc_vlan_iface_info *)malloc(sizeof(*vlan_info));
-			if(vlan_info == NULL)
-			{
-				IPACMERR("Failed to allocate memory.\n");
-				return NULL;
-			}
-			memcpy(vlan_info, buffer + sizeof(struct ipa_msg_meta), sizeof(*vlan_info));
-			evt_data.event = IPA_DEL_VLAN_IFACE;
-			evt_data.evt_data = vlan_info;
-			break;
-
-		case ADD_L2TP_VLAN_MAPPING:
-			mapping = (ipa_ioc_l2tp_vlan_mapping_info *)malloc(sizeof(*mapping));
-			if(mapping == NULL)
-			{
-				IPACMERR("Failed to allocate memory.\n");
-				return NULL;
-			}
-			memcpy(mapping, buffer + sizeof(struct ipa_msg_meta), sizeof(*mapping));
-			evt_data.event = IPA_ADD_L2TP_VLAN_MAPPING;
-			evt_data.evt_data = mapping;
-			break;
-
-		case DEL_L2TP_VLAN_MAPPING:
-			mapping = (ipa_ioc_l2tp_vlan_mapping_info *)malloc(sizeof(*mapping));
-			if(mapping == NULL)
-			{
-				IPACMERR("Failed to allocate memory.\n");
-				return NULL;
-			}
-			memcpy(mapping, buffer + sizeof(struct ipa_msg_meta), sizeof(*mapping));
-			evt_data.event = IPA_DEL_L2TP_VLAN_MAPPING;
-			evt_data.evt_data = mapping;
-			break;
-#endif
 		default:
 			IPACMDBG_H("Unhandled message type: %d\n", event_hdr.msg_type);
 			continue;
@@ -813,6 +694,7 @@ void* ipa_driver_msg_notifier(void *param)
 
 void IPACM_Sig_Handler(int sig)
 {
+	int cnt;
 	ipacm_cmd_q_data evt_data;
 
 	printf("Received Signal: %d\n", sig);
@@ -856,26 +738,14 @@ int main(int argc, char **argv)
 	ipa_is_ipacm_running();
 
 	IPACMDBG_H("In main()\n");
-	(void)argc;
-	(void)argv;
-
-#ifdef FEATURE_IPACM_RESTART
-	IPACMDBG_H("RESET IPA-HW rules\n");
-	ipa_reset();
-#endif
-
-	neigh = new IPACM_Neighbor();
-	ifacemgr = new IPACM_IfaceManager();
-#ifdef FEATURE_IPACM_HAL
-	OffloadMng = IPACM_OffloadManager::GetInstance();
-	hal = HAL::makeIPAHAL(1, OffloadMng);
-	IPACMDBG_H(" START IPACM_OffloadManager and link to android framework\n");
-#endif
+	IPACM_Neighbor *neigh = new IPACM_Neighbor();
+	IPACM_IfaceManager *ifacemgr = new IPACM_IfaceManager();
 
 #ifdef FEATURE_ETH_BRIDGE_LE
-	IPACM_LanToLan* lan2lan = IPACM_LanToLan::get_instance();
+	IPACM_LanToLan* lan2lan = new IPACM_LanToLan();
 #endif
 
+	IPACM_ConntrackClient *cc = IPACM_ConntrackClient::GetInstance();
 	CtList = new IPACM_ConntrackListener();
 
 	IPACMDBG_H("Staring IPA main\n");
@@ -1067,25 +937,3 @@ int ipa_get_if_index
 	close(fd);
 	return IPACM_SUCCESS;
 }
-
-#ifdef FEATURE_IPACM_RESTART
-int ipa_reset()
-{
-	int fd = -1;
-
-	if ((fd = open(IPA_DEVICE_NAME, O_RDWR)) < 0) {
-		IPACMERR("Failed opening %s.\n", IPA_DEVICE_NAME);
-		return IPACM_FAILURE;
-	}
-
-	if (ioctl(fd, IPA_IOC_CLEANUP) < 0) {
-		IPACMERR("IOCTL IPA_IOC_CLEANUP call failed: %s \n", strerror(errno));
-		close(fd);
-		return IPACM_FAILURE;
-	}
-
-	IPACMDBG_H("send IPA_IOC_CLEANUP \n");
-	close(fd);
-	return IPACM_SUCCESS;
-}
-#endif

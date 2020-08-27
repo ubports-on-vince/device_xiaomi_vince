@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -60,7 +60,7 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /* ndc bandwidth ipatetherstats <ifaceIn> <ifaceOut> */
 /* <in->out_bytes> <in->out_pkts> <out->in_bytes> <out->in_pkts */
 
-#define PIPE_STATS "%s %s %llu %llu %llu %llu"
+#define PIPE_STATS "%s %s %lu %lu %lu %lu"
 #define IPA_PIPE_STATS_FILE_NAME "/data/misc/ipa/tether_stats"
 
 /* store each lan-iface unicast routing rule and its handler*/
@@ -169,37 +169,7 @@ public:
 	/* delete header processing context */
 	int eth_bridge_del_hdr_proc_ctx(uint32_t hdr_proc_ctx_hdl);
 
-#ifdef FEATURE_L2TP
-	/* add l2tp rt rule for l2tp client */
-	int add_l2tp_rt_rule(ipa_ip_type iptype, uint8_t *dst_mac, ipa_hdr_l2_type peer_l2_hdr_type,
-		uint32_t l2tp_session_id, uint32_t vlan_id, uint8_t *vlan_client_mac, uint32_t *vlan_iface_ipv6_addr,
-		uint32_t *vlan_client_ipv6_addr, uint32_t *first_pass_hdr_hdl, uint32_t *first_pass_hdr_proc_ctx_hdl,
-		uint32_t *second_pass_hdr_hdl, int *num_rt_hdl, uint32_t *first_pass_rt_rule_hdl, uint32_t *second_pass_rt_rule_hdl);
 
-	/* delete l2tp rt rule for l2tp client */
-	int del_l2tp_rt_rule(ipa_ip_type iptype, uint32_t first_pass_hdr_hdl, uint32_t first_pass_hdr_proc_ctx_hdl,
-		uint32_t second_pass_hdr_hdl, int num_rt_hdl, uint32_t *first_pass_rt_rule_hdl, uint32_t *second_pass_rt_rule_hdl);
-
-	/* add l2tp rt rule for non l2tp client */
-	int add_l2tp_rt_rule(ipa_ip_type iptype, uint8_t *dst_mac, uint32_t *hdr_proc_ctx_hdl,
-		int *num_rt_hdl, uint32_t *rt_rule_hdl);
-
-	/* delete l2tp rt rule for non l2tp client */
-	int del_l2tp_rt_rule(ipa_ip_type iptype, int num_rt_hdl, uint32_t *rt_rule_hdl);
-
-	/* add l2tp flt rule on l2tp interface */
-	int add_l2tp_flt_rule(uint8_t *dst_mac, uint32_t *flt_rule_hdl);
-
-	/* delete l2tp flt rule on l2tp interface */
-	int del_l2tp_flt_rule(uint32_t flt_rule_hdl);
-
-	/* add l2tp flt rule on non l2tp interface */
-	int add_l2tp_flt_rule(ipa_ip_type iptype, uint8_t *dst_mac, uint32_t *vlan_client_ipv6_addr,
-		uint32_t *first_pass_flt_rule_hdl, uint32_t *second_pass_flt_rule_hdl);
-
-	/* delete l2tp flt rule on non l2tp interface */
-	int del_l2tp_flt_rule(ipa_ip_type iptype, uint32_t first_pass_flt_rule_hdl, uint32_t second_pass_flt_rule_hdl);
-#endif
 
 protected:
 
@@ -208,19 +178,10 @@ protected:
 	uint32_t eth_bridge_flt_rule_offset[IPA_IP_MAX];
 
 	/* mac address has to be provided for client related events */
-	void eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, uint8_t *mac,
-		uint32_t *ipv6_addr, char *iface_name);
+	void eth_bridge_post_event(ipa_cm_event_id evt, ipa_ip_type iptype, uint8_t *mac);
 
-#ifdef FEATURE_L2TP
-	/* check if the event is associated with vlan interface */
-	bool is_vlan_event(char *event_iface_name);
-	/* check if the event is associated with l2tp interface */
-	bool is_l2tp_event(char *event_iface_name);
 
-	/* check if the IPv6 address is unique local address */
-	bool is_unique_local_ipv6_addr(uint32_t *ipv6_addr);
 
-#endif
 	virtual int add_dummy_private_subnet_flt_rule(ipa_ip_type iptype);
 
 	int handle_private_subnet_android(ipa_ip_type iptype);
@@ -241,12 +202,6 @@ protected:
 	/* handle tethering client */
 	int handle_tethering_client(bool reset, ipacm_client_enum ipa_client);
 
-	/* add tcp syn flt rule */
-	int add_tcp_syn_flt_rule(ipa_ip_type iptype);
-
-	/* add tcp syn flt rule for l2tp interface*/
-	int add_tcp_syn_flt_rule_l2tp(ipa_ip_type inner_ip_type);
-
 	/* store ipv4 UL filter rule handlers from Q6*/
 	uint32_t wan_ul_fl_rule_hdl_v4[MAX_WAN_UL_FILTER_RULES];
 
@@ -263,22 +218,11 @@ protected:
 
 	bool is_active;
 	bool modem_ul_v4_set;
-	uint8_t v4_mux_id;
 	bool modem_ul_v6_set;
-	uint8_t v6_mux_id;
-
-	bool sta_ul_v4_set;
-	bool sta_ul_v6_set;
 
 	uint32_t if_ipv4_subnet;
 
 	uint32_t ipv6_prefix[2];
-
-	bool is_upstream_set[IPA_IP_MAX];
-	bool is_downstream_set[IPA_IP_MAX];
-	_ipacm_offload_prefix prefix[IPA_IP_MAX];
-
-	uint32_t tcp_syn_flt_rule_hdl[IPA_IP_MAX];
 
 private:
 
@@ -299,7 +243,7 @@ private:
 
 	int header_name_count;
 
-	uint32_t num_eth_client;
+	int num_eth_client;
 
 	NatApp *Nat_App;
 

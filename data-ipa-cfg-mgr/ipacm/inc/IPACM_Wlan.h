@@ -101,7 +101,7 @@ private:
 	ipa_wlan_client *wlan_client;
 
 	int header_name_count;
-	uint32_t num_wifi_client;
+	int num_wifi_client;
 
 	int wlan_ap_index;
 
@@ -233,11 +233,6 @@ private:
 	int handle_wlan_client_reset_rt(ipa_ip_type iptype);
 
 	void handle_SCC_MCC_switch(ipa_ip_type);
-
-#ifdef FEATURE_IPACM_RESTART
-	/*query wlan-clients */
-	int ipa_query_wlan_client();
-#endif
 
 };
 

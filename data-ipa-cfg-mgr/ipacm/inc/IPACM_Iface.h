@@ -1,5 +1,5 @@
 /*
-Copyright (c) 2013-2018, The Linux Foundation. All rights reserved.
+Copyright (c) 2013-2016, The Linux Foundation. All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
 modification, are permitted provided that the following conditions are
@@ -59,9 +59,9 @@ IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define IPV4_DEFAULT_FILTERTING_RULES 3
 
 #ifdef FEATURE_IPA_ANDROID
-#define IPV6_DEFAULT_FILTERTING_RULES 8
+#define IPV6_DEFAULT_FILTERTING_RULES 6
 #else
-#define IPV6_DEFAULT_FILTERTING_RULES 4
+#define IPV6_DEFAULT_FILTERTING_RULES 3
 #endif
 
 #define IPV6_DEFAULT_LAN_FILTERTING_RULES 1
@@ -97,7 +97,7 @@ public:
 	bool softwarerouting_act;
 
 	/* IPACM number of default route rules for ipv6*/
-	uint32_t num_dft_rt_v6;
+	int num_dft_rt_v6;
 
 	uint32_t dft_v4fl_rule_hdl[IPV4_DEFAULT_FILTERTING_RULES];
 	uint32_t dft_v6fl_rule_hdl[IPV6_DEFAULT_FILTERTING_RULES + IPV6_DEFAULT_LAN_FILTERTING_RULES];
@@ -144,7 +144,6 @@ public:
 
 	/* software routing disable */
 	virtual int handle_software_routing_disable(void);
-	void delete_iface(void);
 
 private:
 
