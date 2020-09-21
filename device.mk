@@ -299,7 +299,6 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/libs/libulp2.so:system/lib/libulp2.so \
     $(LOCAL_PATH)/ubuntu/init_setup_first_boot.sh:system/etc/init_setup_first_boot.sh \
     $(LOCAL_PATH)/ubuntu/init_hcismd_up.sh:system/halium/usr/share/bluetooth-touch/vince \
-    $(LOCAL_PATH)/ubuntu/servicemanager.rc:system/etc/init/servicemanager.rc \
     $(LOCAL_PATH)/ubuntu/timekeeper.conf:system/halium/etc/init/timekeeper.conf \
     $(LOCAL_PATH)/ubuntu/touch.pa:system/halium/etc/pulse/touch.pa \
     $(LOCAL_PATH)/ubuntu/apparmor.d/local/usr.bin.media-hub-server:system/halium/etc/apparmor.d/local/usr.bin.media-hub-server \
@@ -324,23 +323,27 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.qti_bsp.abi=1
 
-# UBPorts
+# Ubuntu Touch Mir/hybris integration
 PRODUCT_PACKAGES += \
     libubuntu_application_api \
     libcameraservice \
     libdroidmedia \
     libcamera_compat_layer \
+    camera_service \
+    gst-droid \
     libmedia_compat_layer \
     libui_compat_layer \
     libsf_compat_layer \
-    minimediaservice \
     minisfservice \
     libminisf \
     libaudioflingerglue \
-    miniafservice
+    miniafservice \
+    libminikin \
+    libgui
 
 #droidmedia
 MINIMEDIA_SENSORSERVER_DISABLE := 1
+MINIMEDIA_AUDIOPOLICYSERVICE_ENABLE := 1
 
 # telepathy-ofono quirks
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -352,3 +355,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # for off charging mode
 PRODUCT_PACKAGES += \
     charger_res_images
+
+# droidmedia doesn't support HAL3 yet
+PRODUCT_DEFAULT_PROPERTY_OVERRIDES += \
+    persist.camera.HAL3.enabled=0
