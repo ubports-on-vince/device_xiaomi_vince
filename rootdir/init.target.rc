@@ -49,8 +49,8 @@ on fs
     # these partition flashed on the device. Failure to mount any partition in fstab file
     # results in failure to launch late-start class.
 
-    wait /dev/block/bootdevice/by-name/cache
-    mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
+    #wait /dev/block/bootdevice/by-name/cache
+    #mount ext4 /dev/block/bootdevice/by-name/cache /cache nosuid nodev barrier=1
 
     wait /dev/block/bootdevice/by-name/persist
     mount ext4 /dev/block/bootdevice/by-name/persist /persist nosuid nodev barrier=1
@@ -95,6 +95,12 @@ on post-fs-data
     mkdir /persist/data/tz 0700 system system
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/misc/hbtp 0750 system system
+
+    mkdir /data
+    mount ext4 /dev/block/bootdevice/by-name/userdata /data
+    mkdir /data/cache
+    mount none /data/cache /cache bind
+    mkdir /data/cache/recovery
 
 #start camera server as daemon
 service qcamerasvr /system/bin/mm-qcamera-daemon
