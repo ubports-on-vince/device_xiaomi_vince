@@ -3,6 +3,7 @@
 #
 #    Copyright (C) 2002-2009 Novell/SUSE
 #    Copyright (C) 2009-2011 Canonical Ltd.
+#    Copyright (C) 2019-2020 Dreemurrs Embedded Labs
 #
 #    This program is free software; you can redistribute it and/or
 #    modify it under the terms of version 2 of the GNU General Public
@@ -114,7 +115,6 @@
   /dev/full                      rw,
   /dev/tty                       rw,
   /socket/property_service       rw,
-  /proc/cmdline                  r,
   /socket/logdw                  rw,
 
   # Sometimes used to determine kernel/user interfaces to use
@@ -128,6 +128,21 @@
   @{PROC}/stat                   r,
   @{PROC}/cpuinfo                r,
   /sys/devices/system/cpu/online r,
+
+  # Currently, AppArmor does not work properly yet, so this is a list of
+  # things to be whitelisted:
+  @{PROC}/vmstat                 r,
+  @{PROC}/@{pid}/loginuid        r,
+  @{PROC}/@{pid}/task/@{tid}/status r,
+  @{PROC}/@{pid}/mounts          r,
+  /sys/devices/soc0/soc_id       r,
+  /sys/devices/soc/1a00000.qcom,mdss_mdp/caps r,
+  @{HOME}/**                     rw,
+  /dev/disk/by-label/            r,
+  /opt/**                        r,
+  /etc/passwd                    r,
+  /etc/nsswitch.conf             r,
+  /var/lib/extrausers/passwd     r,
 
   # glibc's *printf protections read the maps file
   @{PROC}/@{pid}/maps            r,
@@ -197,4 +212,4 @@
   # encrypted ~/.Private and old-style encrypted $HOME
   owner @{HOME}/.Private/** mrixwlk,
   # new-style encrypted $HOME
-owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
+  owner @{HOMEDIRS}/.ecryptfs/*/.Private/** mrixwlk,
