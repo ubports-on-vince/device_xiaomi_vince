@@ -332,7 +332,6 @@ PRODUCT_PACKAGES += \
     libdroidmedia \
     libcamera_compat_layer \
     camera_service \
-    gst-droid \
     libmedia_compat_layer \
     libui_compat_layer \
     libsf_compat_layer \
@@ -340,6 +339,7 @@ PRODUCT_PACKAGES += \
     libminisf \
     libaudioflingerglue \
     miniafservice \
+    minimediaservice \
     libminikin \
     libgui
 
