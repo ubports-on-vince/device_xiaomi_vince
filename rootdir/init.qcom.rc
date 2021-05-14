@@ -204,6 +204,9 @@ on boot
     chown root system /sys/kernel/dload/emmc_dload
     chmod 0660 /sys/kernel/dload/emmc_dload
 
+    # Battery charging management
+    chmod 0666 /sys/class/power_supply/battery/charging_enabled
+
     #Vibrator
     chmod 0666 /sys/class/timed_output/vibrator/enable
 
