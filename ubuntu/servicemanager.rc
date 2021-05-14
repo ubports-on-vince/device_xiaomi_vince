@@ -1,0 +1,36 @@
+service servicemanager /system/bin/servicemanager
+    class core
+    user system
+    group system readproc
+    critical
+    onrestart restart healthd
+    onrestart restart zygote
+    onrestart restart audioserver
+    onrestart restart media
+    onrestart restart surfaceflinger
+    onrestart restart inputflinger
+    onrestart restart drm
+    onrestart restart cameraserver
+    # port from sfos
+    onrestart restart miniaf
+    onrestart restart minimedia
+    onrestart restart minisf
+    writepid /dev/cpuset/system-background/tasks
+
+service minimedia /system/bin/minimediaservice
+    class main
+    user media
+    group audio camera
+    ioprio rt 4
+    # hacky workaround for video decoding
+    setenv LD_PRELOAD /system/lib/libOmxVdec.so
+
+service minisf /system/bin/minisfservice
+    class main
+    user system
+    group graphics
+
+service miniaf /system/bin/miniafservice
+    class main
+    user system
+    group audio

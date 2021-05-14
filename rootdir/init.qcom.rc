@@ -1207,15 +1207,3 @@ service unblock_wakelock /system/bin/sh /system/etc/unblock_wakelock.sh
     group root
     disabled
     oneshot
-
-service minimedia /system/bin/minimediaservice
-    class main
-    user media
-    group audio camera
-    ioprio rt 4
-
-service minisf /system/bin/minisfservice
-    setenv LD_PRELOAD /system/lib/libsurfaceflinger.so
-    class main
-    user system
-    group graphics
