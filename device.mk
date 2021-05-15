@@ -319,7 +319,8 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/ubuntu/usr/share/usbinit/setupusb:system/halium/usr/share/usbinit/setupusb \
     $(LOCAL_PATH)/ubuntu/etc/init/mtp-state.conf:system/halium/etc/init/mtp-state.conf \
-    $(LOCAL_PATH)/ubuntu/usr/share/upstart/sessions/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf
+    $(LOCAL_PATH)/ubuntu/usr/share/upstart/sessions/mtp-server.conf:system/halium/usr/share/upstart/sessions/mtp-server.conf \
+    $(LOCAL_PATH)/ubuntu/usr/share/upstart/sessions/usensord.conf:system/halium/usr/share/upstart/sessions/usensord.conf
 
 
 PRODUCT_PROPERTY_OVERRIDES += \
