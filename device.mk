@@ -343,16 +343,10 @@ PRODUCT_PACKAGES += \
     libminikin \
     libgui
 
-#droidmedia
-MINIMEDIA_SENSORSERVER_DISABLE := 1
-MINIMEDIA_AUDIOPOLICYSERVICE_ENABLE := 1
-
 # telepathy-ofono quirks
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.t-o.quirk.forcesink=sink.primary_output \
-    ro.t-o.quirk.forcesource=source.record_24_primary_input \
-    ro.qc.sensors.wl_dis=true \
-    ubuntu.widi.supported=true
+    ro.t-o.quirk.forcesource=source.record_24_primary_input
 	
 # for off charging mode
 PRODUCT_PACKAGES += \
