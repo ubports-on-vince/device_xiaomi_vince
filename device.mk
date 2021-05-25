@@ -339,7 +339,6 @@ PRODUCT_PACKAGES += \
     libminisf \
     libaudioflingerglue \
     miniafservice \
-    minimediaservice \
     libminikin \
     libgui
 
